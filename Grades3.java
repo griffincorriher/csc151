@@ -17,15 +17,18 @@ public class Grades3
    private double testAvg;
    private double finalExam;
    private double courseGrade;
+   private char courseLetter;
    private boolean pass = courseGrade >= 60; 
-   public static int numStudents = 0;
    private LocalDateTime today;
+   public static int numStudents = 0;
+   public boolean gradeEntered;
 
    //Grade weights
    public double lab = .30;
    public double project = .30;
    public double test = .30;
    public double exam = .1;
+  
    
    //Number of students entered
       public Grades3()
@@ -137,6 +140,18 @@ public class Grades3
       double courseGrade;
       courseGrade = ( (lab * labAvg) + (test * testAvg) + (project * projectAvg) + (exam * finalExam) );
       this.courseGrade = courseGrade;
+      
+      if(courseGrade>=90)
+         courseLetter = 'A';
+      else if(courseGrade>=80 && courseGrade<90)
+         courseLetter = 'B';
+      else if(courseGrade>=70 && courseGrade<80)
+         courseLetter = 'C';
+      else if(courseGrade>=60 && courseGrade<70)
+         courseLetter = 'D';
+      else
+         courseLetter = 'F';
+      this.courseLetter = courseLetter;
    }
    
    //Determine passing grade
@@ -152,19 +167,16 @@ public class Grades3
       System.out.println("");
       System.out.println("Student name: " + studentFirst + " " + studentLast);
       System.out.println("Student ID: " + studentId);
-      System.out.println("Test average : " + testAvg);     
-      System.out.println("Lab average : " + labAvg);
-      System.out.println("Project average : " + projectAvg);
+      System.out.println("Test average: " + testAvg);     
+      System.out.println("Lab average: " + labAvg);
+      System.out.println("Project average: " + projectAvg);
       System.out.println("Final exam : " + finalExam);
-      System.out.println("Course grade : " + courseGrade);
+      System.out.println("Course grade (numeric): " + courseGrade);
+      System.out.println("Course grade (letter): " + courseLetter);
       System.out.println("Student passing: " + pass); 
-      System.out.println(""); //Delete "" and add today variable into println to debug and prove it grabs date/time for each student    
+      System.out.println(""); //Delete "" and add today variable into println to debug and prove it grabs date/time for each student
       System.out.println("The numeric course grade is calculated based on a weighted average: \n Tests = " + test*100 + "%" + "\n Labs = " + lab*100 + "%" + " \n Projects = " + project*100 + "%" + "\n Final Exam = " + exam*100 + "%");                             
+                                     
    } 
-
-   public void checkLab(double labAvg)
-   {
-      if(labAvg>=0);
-      else System.out.println("Please enter a grade for the lab");
-   }
+                                  
 }   
