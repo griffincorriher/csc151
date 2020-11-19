@@ -14,10 +14,11 @@ public class GradeCalculator3
       String studentFirst;
       String studentLast;
       String studentId;
-      double labAvg = 0;
-      double projectAvg = 0;
-      double testAvg = 0;
-      double finalExam = 0;
+      int DEFAULT_VALUE = -1;
+      double labAvg = DEFAULT_VALUE;
+      double projectAvg = DEFAULT_VALUE;
+      double testAvg = DEFAULT_VALUE;
+      double finalExam = DEFAULT_VALUE;
       LocalDateTime today;
       char choice = 'c';
       char lab = 'l';
@@ -47,91 +48,68 @@ public class GradeCalculator3
       student1.setToday(today);      
                   
       //Student 1 loop                             
-      while(student1.getTestAvg()<=0 || student1.getLabAvg()<=0 || student1.getProjectAvg()<=0 || student1.getFinalExam()<=0)
+      do
       {
          //Display Menu for Student 1 
          choice = displayMenu();
 
          //Switch statement Student 1
          switch(choice)
-            {
+         {
             case 'l':
-            {
-               labAvg = 0;
-               if (student1.getLabAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(labAvg<=0)
-               {
-                  if (labAvg==0){
-                  labAvg = inputLabAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     labAvg = inputLabAvg(); 
-                     break;}
-               }
-               student1.setLabAvg(labAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'L':
+            {      
+               if (labAvg<0){
+                  labAvg = inputLabAvg();
+                     if (labAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student1.setLabAvg(labAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 'p':
-            {
-               projectAvg = 0;
-               if (student1.getProjectAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(projectAvg<=0)
-               {
-                  if (projectAvg==0){
-                  projectAvg = inputProjectAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     projectAvg = inputProjectAvg(); 
-                     break;}
-               }
-               student1.setProjectAvg(projectAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'P':
+            {      
+               if (projectAvg<0){
+                  projectAvg = inputProjectAvg();
+                     if (projectAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student1.setProjectAvg(projectAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 't':
-            {
-               testAvg = 0;
-               if (student1.getTestAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(testAvg<=0)
-               {
-                  if (testAvg==0){
-                  testAvg = inputTestAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     testAvg = inputTestAvg(); 
-                     break;}
-               }
-               student1.setTestAvg(testAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'T':
+            {      
+               if (testAvg<0){
+                  testAvg = inputTestAvg();
+                     if (testAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student1.setTestAvg(testAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 'f':
-            {
-               finalExam = 0;
-               if (student1.getFinalExam()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(finalExam<=0)
-               {
-                  if (finalExam==0){
-                  finalExam = inputFinalExam();}
-                     else {System.out.println("Enter the correct grade");
-                     finalExam = inputFinalExam(); 
-                     break;}
-               }
-               student1.setFinalExam(finalExam);
-               System.out.println("Value saved!");                              
-               break;
+            case 'F':
+            {      
+               if (finalExam<0){
+                  finalExam = inputFinalExam();
+                     if (finalExam<0){System.out.println("Please enter a valid grade");}
+                  else{student1.setFinalExam(finalExam);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 'q':
+            case 'Q':
             {
                 break;         
             }
@@ -140,8 +118,16 @@ public class GradeCalculator3
             {
                System.out.println("Invalid response");
             }
-         }//end student 1 switch      
-      }//end student 1 loop
+         }//end student 1 switch  
+   
+      }while(labAvg<0 || testAvg<0 || projectAvg<0 || finalExam<0);
+      //end student 1 loop 
+      
+      //Reset Variables
+      labAvg = DEFAULT_VALUE;
+      testAvg = DEFAULT_VALUE;
+      projectAvg = DEFAULT_VALUE;
+      finalExam = DEFAULT_VALUE;   
 
       //Request personal input for Student 2
       studentFirst = inputStudentFirst();
@@ -156,91 +142,68 @@ public class GradeCalculator3
       student2.setToday(today); 
       
       //Student 2 loop                             
-      while(student2.getTestAvg()<=0 || student2.getLabAvg()<=0 || student2.getProjectAvg()<=0 || student2.getFinalExam()<=0)
-      {         
+      do
+      {
          //Display Menu for Student 2 
          choice = displayMenu();
 
          //Switch statement Student 2
          switch(choice)
-            {
+         {
             case 'l':
-            {
-               labAvg = 0;
-               if (student2.getLabAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(labAvg<=0)
-               {
-                  if (labAvg==0){
-                  labAvg = inputLabAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     labAvg = inputLabAvg(); 
-                     break;}
-               }
-               student2.setLabAvg(labAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'L':
+            {      
+               if (labAvg<0){
+                  labAvg = inputLabAvg();
+                     if (labAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student2.setLabAvg(labAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 'p':
-            {
-               projectAvg = 0;
-               if (student2.getProjectAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(projectAvg<=0)
-               {
-                  if (projectAvg==0){
-                  projectAvg = inputProjectAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     projectAvg = inputProjectAvg(); 
-                     break;}
-               }
-               student2.setProjectAvg(projectAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'P':
+            {      
+               if (projectAvg<0){
+                  projectAvg = inputProjectAvg();
+                     if (projectAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student2.setProjectAvg(projectAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 't':
-            {
-               testAvg = 0;
-               if (student2.getTestAvg()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(testAvg<=0)
-               {
-                  if (testAvg==0){
-                  testAvg = inputTestAvg();}
-                     else {System.out.println("Enter the correct grade");
-                     testAvg = inputTestAvg(); 
-                     break;}
-               }
-               student2.setTestAvg(testAvg);
-               System.out.println("Value saved!");                              
-               break;
+            case 'T':
+            {      
+               if (testAvg<0){
+                  testAvg = inputTestAvg();
+                     if (testAvg<0){System.out.println("Please enter a valid grade");}
+                  else{student2.setTestAvg(testAvg);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
             }  
             
             case 'f':
-            {
-               finalExam = 0;
-               if (student2.getFinalExam()>0)
-                  {System.out.println("Grade has already been entered");
-                  break;}
-               while(finalExam<=0)
-               {
-                  if (finalExam==0){
-                  finalExam = inputFinalExam();}
-                     else {System.out.println("Enter the correct grade");
-                     finalExam = inputFinalExam(); 
-                     break;}
-               }
-               student2.setFinalExam(finalExam);
-               System.out.println("Value saved!");                              
-               break;
-            }   
+            case 'F':
+            {      
+               if (finalExam<0){
+                  finalExam = inputFinalExam();
+                     if (finalExam<0){System.out.println("Please enter a valid grade");}
+                  else{student2.setFinalExam(finalExam);
+                  System.out.println("Value saved!");}}                  
+               else{
+                  System.out.println("Grade has already been entered");}
+               break;     
+            }  
             
             case 'q':
+            case 'Q':
             {
                 break;         
             }
@@ -249,9 +212,17 @@ public class GradeCalculator3
             {
                System.out.println("Invalid response");
             }
-         }//end student 2 switch      
-      }//end student 2 loop
+         }//end Student 2 switch  
+   
+      }while(labAvg<0 || testAvg<0 || projectAvg<0 || finalExam<0);
+      //end Student 2 loop 
       
+      //Reset Variables
+      labAvg = DEFAULT_VALUE;
+      testAvg = DEFAULT_VALUE;
+      projectAvg = DEFAULT_VALUE;
+      finalExam = DEFAULT_VALUE; 
+                       
       //Calculate student grade
       student1.calculateCourseGrade(student1.getLabAvg(), student1.getProjectAvg(), student1.getTestAvg(), student1.getFinalExam());
       student2.calculateCourseGrade(student2.getLabAvg(), student2.getProjectAvg(), student2.getTestAvg(), student2.getFinalExam());
@@ -365,6 +336,6 @@ public class GradeCalculator3
          System.out.println("Please enter your selection now.");
          choice = keyboard.next().charAt(0);
          return choice;
-      }      
-          
+      }
+               
 }   
