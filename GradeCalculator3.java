@@ -33,7 +33,9 @@ public class GradeCalculator3
       Grades3 student2 = new Grades3();
       
       //Display Greeting
-      displayGreeting();  
+      displayGreeting();
+   
+   //While loop for QUIT PROGRAM function     
    while(choice != 'q' || choice != 'Q')
    {
       //Request personal input for Student 1
@@ -63,63 +65,44 @@ public class GradeCalculator3
          {
             case 'l':
             case 'L':
-            {      
-               if (labAvg<0){
-                  labAvg = inputLabAvg();
-                     if (labAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student1.setLabAvg(labAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
+            {  
+               labAvg = labDataValidation(labAvg); 
+                  if(labAvg>=0){
+                  student1.setLabAvg(labAvg);                
+                  break;}
+              break;   
             }  
             
             case 'p':
             case 'P':
-            {      
-               if (projectAvg<0){
-                  projectAvg = inputProjectAvg();
-                     if (projectAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student1.setProjectAvg(projectAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            }  
+            {  
+               projectAvg = projectDataValidation(projectAvg); 
+                  if(projectAvg>=0){
+                  student1.setProjectAvg(projectAvg);                
+                  break;} 
+              break;   
+            }    
             
             case 't':
             case 'T':
-            {      
-               if (testAvg<0){
-                  testAvg = inputTestAvg();
-                     if (testAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student1.setTestAvg(testAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            }  
+            {  
+               testAvg = testDataValidation(testAvg); 
+                  if(testAvg>=0){
+                  student1.setTestAvg(testAvg);                
+                  break;} 
+              break;   
+            }    
             
             case 'f':
             case 'F':
-            {      
-               if (finalExam<0){
-                  finalExam = inputFinalExam();
-                     if (finalExam<0){System.out.println("Please enter a valid grade");}
-                  else{student1.setFinalExam(finalExam);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            } 
-            
-            case 'q':
-            case 'Q':
-            {
-               choice = 'q';
-               break;
-            }
-                        
+            {  
+               finalExam = finalExamDataValidation(finalExam); 
+                  if(finalExam>=0){
+                  student1.setFinalExam(finalExam);                
+                  break;} 
+              break;   
+            }   
+                                   
             default:
             {
                System.out.println("Invalid response");
@@ -166,62 +149,50 @@ public class GradeCalculator3
          {
             case 'l':
             case 'L':
-            {      
-               if (labAvg<0){
-                  labAvg = inputLabAvg();
-                     if (labAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student2.setLabAvg(labAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
+            {  
+               labAvg = labDataValidation(labAvg); 
+                  if(labAvg>=0){
+                  student2.setLabAvg(labAvg);                
+                  break;} 
+              break;   
             }  
             
             case 'p':
             case 'P':
-            {      
-               if (projectAvg<0){
-                  projectAvg = inputProjectAvg();
-                     if (projectAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student2.setProjectAvg(projectAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            }  
+            {  
+               projectAvg = projectDataValidation(projectAvg); 
+                  if(projectAvg>=0){
+                  student2.setProjectAvg(projectAvg);                
+                  break;} 
+              break;   
+            }    
             
             case 't':
             case 'T':
-            {      
-               if (testAvg<0){
-                  testAvg = inputTestAvg();
-                     if (testAvg<0){System.out.println("Please enter a valid grade");}
-                  else{student2.setTestAvg(testAvg);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            }  
+            {  
+               testAvg = testDataValidation(testAvg); 
+                  if(testAvg>=0){
+                  student2.setTestAvg(testAvg);                
+                  break;} 
+              break;   
+            }    
             
             case 'f':
             case 'F':
-            {      
-               if (finalExam<0){
-                  finalExam = inputFinalExam();
-                     if (finalExam<0){System.out.println("Please enter a valid grade");}
-                  else{student2.setFinalExam(finalExam);
-                  System.out.println("Value saved!");}}                  
-               else{
-                  System.out.println("Grade has already been entered");}
-               break;     
-            }  
-                  
+            {  
+               finalExam = finalExamDataValidation(finalExam); 
+                  if(finalExam>=0){
+                  student2.setFinalExam(finalExam);                
+                  break;} 
+              break;   
+            }   
+                                   
             default:
             {
                System.out.println("Invalid response");
             }
          }//end Student 2 switch  
-   
+      
       }while(labAvg<0 || testAvg<0 || projectAvg<0 || finalExam<0);
       //end Student 2 loop
        
@@ -246,6 +217,7 @@ public class GradeCalculator3
       //Display student information
       student1.displayGrades();
       student2.displayGrades();
+    break;
     }
     
       //Thank user
@@ -339,16 +311,76 @@ public class GradeCalculator3
          System.out.println("Thank you for using the program!");
       }  
       
-      //Menu
+      //Display menu
       public static char displayMenu()
       {
          Scanner keyboard = new Scanner(System.in); 
          char choice;
          System.out.println("Please select from the following menu:");
          System.out.println(" Lab" + "\n Project" + "\n Test" + "\n Final Exam" + "\n Quit");
-         System.out.println("Please enter your selection now.");
+         System.out.println("\nPlease enter your selection now.");
          choice = keyboard.next().charAt(0);
          return choice;
       }
-     
-}//end class   
+      
+      //Lab data validation
+      public static double labDataValidation(double labAvg)
+      {
+         if(labAvg>=0){
+            System.out.println("\nCategory has already been entered, please select again!\n");}        
+         if(labAvg<0){
+         labAvg = inputLabAvg();
+            if(labAvg<0){
+               System.out.println("\nInvalid grade, please select from the menu again!\n");}
+            else{
+               System.out.println("\nValue saved!\n");}} 
+                            
+         return labAvg;
+                           
+      }
+      
+      //Project data validation
+      public static double projectDataValidation(double projectAvg)
+      {
+         if(projectAvg>=0){
+            System.out.println("\nCategory has already been entered, please select again!\n");}        
+         if(projectAvg<0){
+         projectAvg = inputProjectAvg();
+            if(projectAvg<0){
+               System.out.println("\nInvalid grade, please select from the menu again!\n");}
+            else{
+               System.out.println("\nValue saved!\n");}}                
+         return projectAvg;
+                           
+      } 
+      
+      //Test data validation
+      public static double testDataValidation(double testAvg)
+      {
+         if(testAvg>=0){
+            System.out.println("\nCategory has already been entered, please select again!\n");}  
+         if(testAvg<0){
+         testAvg = inputTestAvg();
+            if(testAvg<0){
+               System.out.println("\nInvalid grade, please select from the menu again!\n");}
+            else{
+               System.out.println("\nValue saved!\n");}}                
+         return testAvg;
+                           
+      } 
+      
+      //Final exam data validation
+      public static double finalExamDataValidation(double finalExam)
+      {
+         if(finalExam>=0){
+            System.out.println("\nCategory has already been entered, please select again!\n");}  
+         if(finalExam<0){
+         finalExam = inputFinalExam();
+            if(finalExam<0){
+               System.out.println("\nInvalid grade, please select from the menu again!\n");}
+            else{
+               System.out.println("\nValue saved!\n");}}                        
+         return finalExam;
+                           
+      }      
+}//end class
