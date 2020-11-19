@@ -132,8 +132,7 @@ public class Grades3
    {
       return today;
    }
-
-   
+       
    //Calculate final course grade
    public void calculateCourseGrade(double labAvg, double testAvg, double projectAvg, double finalExam)
    {
@@ -161,7 +160,7 @@ public class Grades3
       pass = courseGrade >= 60;
       this.pass = pass;
    }
-    
+   
    public void displayGrades()
    {
       System.out.println("");
