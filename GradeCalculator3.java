@@ -34,12 +34,13 @@ public class GradeCalculator3
       
       //Display Greeting
       displayGreeting();  
-   
+   while(choice != 'q' || choice != 'Q')
+   {
       //Request personal input for Student 1
       studentFirst = inputStudentFirst();
       studentLast = inputStudentLast();      
       studentId = inputStudentId();
-
+      
       //Set information for Student 1
       today = grabToday();
       student1.setStudentFirst(studentFirst);
@@ -52,7 +53,11 @@ public class GradeCalculator3
       {
          //Display Menu for Student 1 
          choice = displayMenu();
-
+         
+         //QUIT PROGRAM
+         if(choice == 'q' || choice == 'Q')
+            {break;}
+            
          //Switch statement Student 1
          switch(choice)
          {
@@ -106,23 +111,28 @@ public class GradeCalculator3
                else{
                   System.out.println("Grade has already been entered");}
                break;     
-            }  
+            } 
             
             case 'q':
             case 'Q':
             {
-                break;         
+               choice = 'q';
+               break;
             }
-            
+                        
             default:
             {
                System.out.println("Invalid response");
             }
+
          }//end student 1 switch  
-   
       }while(labAvg<0 || testAvg<0 || projectAvg<0 || finalExam<0);
       //end student 1 loop 
       
+      //QUIT PROGRAM
+      if(choice == 'q' || choice == 'Q')
+         {break;}    
+           
       //Reset Variables
       labAvg = DEFAULT_VALUE;
       testAvg = DEFAULT_VALUE;
@@ -146,7 +156,11 @@ public class GradeCalculator3
       {
          //Display Menu for Student 2 
          choice = displayMenu();
-
+         
+         //QUIT PROGRAM
+         if(choice == 'q' || choice == 'Q')
+            {break;}   
+                  
          //Switch statement Student 2
          switch(choice)
          {
@@ -201,13 +215,7 @@ public class GradeCalculator3
                   System.out.println("Grade has already been entered");}
                break;     
             }  
-            
-            case 'q':
-            case 'Q':
-            {
-                break;         
-            }
-            
+                  
             default:
             {
                System.out.println("Invalid response");
@@ -215,8 +223,12 @@ public class GradeCalculator3
          }//end Student 2 switch  
    
       }while(labAvg<0 || testAvg<0 || projectAvg<0 || finalExam<0);
-      //end Student 2 loop 
-      
+      //end Student 2 loop
+       
+      //QUIT PROGRAM
+      if(choice == 'q' || choice == 'Q')
+         {break;} 
+                
       //Reset Variables
       labAvg = DEFAULT_VALUE;
       testAvg = DEFAULT_VALUE;
@@ -234,11 +246,12 @@ public class GradeCalculator3
       //Display student information
       student1.displayGrades();
       student2.displayGrades();
-      
+    }
+    
       //Thank user
-      displayThankYou();   
-           
-}//end main      
+      displayThankYou(); 
+
+   }//end main      
      
    
       //Greeting
@@ -337,5 +350,5 @@ public class GradeCalculator3
          choice = keyboard.next().charAt(0);
          return choice;
       }
-               
-}   
+     
+}//end class   
