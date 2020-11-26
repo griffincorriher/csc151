@@ -9,30 +9,28 @@ public class GiftBudget
 {
    public static void main(String[] args)
    {
+      //Variables
       int year = YearMonth.now().getYear();
       String[] gifts = new String[3];
       double[] giftPrices = new double[3];
-      double giftPrice = 0;
       double totalCost = 0;
       int i = 0;
-      String QUIT = "999";
-            
+      
+      //Input user name      
       Scanner input = new Scanner(System.in);
       System.out.println("Please enter your name");
       String name = input.nextLine();
       
-      System.out.println("Please enter the name of your three gifts or enter 999 when you are done");  
+      //Enter the names of the gifts
+      System.out.println("Please enter the name of your three gifts");  
 
-         for (i = 0; i < 3; i++)
-         {
-         System.out.println("What is gift number " + (i + 1) + " ?");    
-         gifts[i] = input.nextLine();
-            if (gifts[i] == "999")
-            {
-               break;
-            }
-         }
+      for (i = 0; i < 3; i++)
+      {
+      System.out.println("What is gift number " + (i + 1) + " ?");    
+      gifts[i] = input.nextLine();
+      }
          
+      //Enter the prices of the gift   
       System.out.println("Please enter the price your "+ gifts.length + " gifts");
       
       for (i = 0; i < gifts.length; i++)
@@ -46,7 +44,7 @@ public class GiftBudget
          totalCost += giftPrices[i];
       }
       
-      //Display
+      //Display information
       System.out.println(name + "'s gift budget\n");
       System.out.printf("%-15s%s\n", "Gift", "Price $");
       System.out.println("----------------------");       
@@ -56,10 +54,8 @@ public class GiftBudget
          System.out.printf("%-15s%.2f\n",gifts[i], giftPrices[i]);
       }
       
-      System.out.println("\nThe total budget for " + year + " is: $" + totalCost);
-      
-      
-
-      
+      //Display total cost
+      System.out.println("\nThe total budget for " + year + " is: $" + totalCost);     
    }
 }
+
