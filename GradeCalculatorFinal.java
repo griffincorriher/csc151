@@ -69,10 +69,13 @@ public class GradeCalculatorFinal
          {
             case 'l':
             case 'L':
-            {  
+            { 
+               if (labs[2] > 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
                labs = labDataValidation(labs);
                student1.setLabAvg(labs);
-               System.out.println("Values Saved!\n");
+               System.out.println("Values Saved!\n");}
                break;   
             }  
             
@@ -329,7 +332,7 @@ public class GradeCalculatorFinal
             labs[i] = keyboard.nextDouble();
             if(labs[i] < 0){
                i = -1;
-               System.out.println("Invalid Entry");
+               System.out.println("Invalid grade, please try again!\n");
                }             
          }
          return labs;
