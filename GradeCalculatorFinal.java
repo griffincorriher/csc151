@@ -53,13 +53,18 @@ public class GradeCalculatorFinal
       student1.setStudentLast(studentLast);
       student1.setStudentId(studentId);
       student1.setToday(today);      
-                  
+      
+      //Sets arrays to default value
+      labs[2] = DEFAULT_VALUE;
+      projects[2] = DEFAULT_VALUE;
+      tests[2] = DEFAULT_VALUE;
+                     
       //Student 1 loop                             
       do
       {
          //Display Menu for Student 1 
          choice = displayMenu();
-         
+                                    
          //QUIT PROGRAM
          if(choice == 'q' || choice == 'Q')
             {break;}
@@ -69,8 +74,8 @@ public class GradeCalculatorFinal
          {
             case 'l':
             case 'L':
-            { 
-               if (labs[2] > 0)
+            {  
+               if (labs[2] >= 0)
                {System.out.println("\nCategory has already been entered, please select again!\n");}
                else{
                labs = labDataValidation(labs);
@@ -82,19 +87,25 @@ public class GradeCalculatorFinal
             case 'p':
             case 'P':
             {  
-               projects = inputProjectAvg();
+               if (projects[2] >= 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
+               projects = projectDataValidation(projects);
                student1.setProjectAvg(projects);
-               System.out.println("Values Saved!\n");
-               break;   
+               System.out.println("Values Saved!\n");}
+               break;    
             }    
             
             case 't':
             case 'T':
             {  
-               tests = inputTestAvg();
-               student1.setTestAvg(tests);
-               System.out.println("Values Saved!\n");               
-               break;   
+               if (tests[2] >= 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
+               tests = testDataValidation(tests);
+               student1.setProjectAvg(tests);
+               System.out.println("Values Saved!\n");}
+               break; 
             }    
             
             case 'f':
@@ -138,6 +149,11 @@ public class GradeCalculatorFinal
       student2.setStudentId(studentId);
       student2.setToday(today); 
       
+      //Sets arrays to default value
+      labs[2] = DEFAULT_VALUE;
+      projects[2] = DEFAULT_VALUE;
+      tests[2] = DEFAULT_VALUE;      
+      
       //Student 2 loop                             
       do
       {
@@ -153,29 +169,39 @@ public class GradeCalculatorFinal
          {
             case 'l':
             case 'L':
-            {  
-              labs = labDataValidation(labs);
-              student2.setLabAvg(labs);
-
-              break;   
+            { 
+               if (labs[2] >= 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
+               labs = labDataValidation(labs);
+               student2.setLabAvg(labs);
+               System.out.println("Values Saved!\n");}
+               break;   
             }  
             
             case 'p':
             case 'P':
             {  
-              projects = inputProjectAvg();
-              student2.setProjectAvg(projects);
-
-              break;   
+               if (projects[2] >= 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
+               projects = projectDataValidation(projects);
+               student2.setProjectAvg(projects);
+               System.out.println("Values Saved!\n");}
+               break;    
             }    
             
             case 't':
             case 'T':
             {  
-               tests = inputTestAvg();
-               student2.setTestAvg(tests);
-              break;   
-            }    
+               if (tests[2] >= 0)
+               {System.out.println("\nCategory has already been entered, please select again!\n");}
+               else{
+               tests = testDataValidation(tests);
+               student2.setProjectAvg(tests);
+               System.out.println("Values Saved!\n");}
+               break; 
+            }      
                         
             case 'f':
             case 'F':
@@ -260,33 +286,7 @@ public class GradeCalculatorFinal
          studentId = keyboard.nextLine();
          return studentId;
       }
-      
-      public static double[] inputProjectAvg()
-      {
-         double[] projects = new double[3];
-         Scanner keyboard = new Scanner(System.in);
-         int i = 0;     
-         for (i = 0; i < 3; i++)
-         {
-            System.out.println("Enter students #" + (i + 1) + " project grade >>");               
-            projects[i] = keyboard.nextDouble();
-         }
-         return projects;
-      }
-      
-      public static double[] inputTestAvg()
-      {
-         double[] tests = new double[3];
-         Scanner keyboard = new Scanner(System.in);
-         int i = 0;     
-         for (i = 0; i < 3; i++)
-         {
-            System.out.println("Enter students #" + (i + 1) + " test grade >>");               
-            tests[i] = keyboard.nextDouble();
-         }
-         return tests;
-      }    
-      
+            
       public static double inputFinalExam()
       {
          Scanner keyboard = new Scanner(System.in);
@@ -325,7 +325,7 @@ public class GradeCalculatorFinal
       //Lab data validation
       public static double[] labDataValidation(double[] labs)
       {
-         Scanner keyboard = new Scanner(System.in);   
+         Scanner keyboard = new Scanner(System.in);  
          for (int i = 0; i < 3; i++)
          {
             System.out.println("Enter students #" + (i + 1) + " lab grade >>");              
@@ -338,35 +338,37 @@ public class GradeCalculatorFinal
          return labs;
       }
       
-//       //Project data validation
-//       public static double projectDataValidation(double projectAvg)
-//       {
-//          if(projectAvg>=0){
-//             System.out.println("\nCategory has already been entered, please select again!\n");}        
-//          if(projectAvg<0){
-//          inputProjectAvg();
-//             if(projectAvg<0){
-//                System.out.println("\nInvalid grade, please select from the menu again!\n");}
-//             else{
-//                System.out.println("\nValue saved!\n");}}                
-//          return projectAvg;
-//                            
-//       } 
-//       
-//       //Test data validation
-//       public static double testDataValidation(double testAvg)
-//       {
-//          if(testAvg>=0){
-//             System.out.println("\nCategory has already been entered, please select again!\n");}  
-//          if(testAvg<0){
-//          inputTestAvg();
-//             if(testAvg<0){
-//                System.out.println("\nInvalid grade, please select from the menu again!\n");}
-//             else{
-//                System.out.println("\nValue saved!\n");}}                
-//          return testAvg;
-//                            
-//       } 
+      //Project data validation
+      public static double[] projectDataValidation(double[] projects)
+      {
+         Scanner keyboard = new Scanner(System.in);   
+         for (int i = 0; i < 3; i++)
+         {
+            System.out.println("Enter students #" + (i + 1) + " project grade >>");              
+            projects[i] = keyboard.nextDouble();
+            if(projects[i] < 0){
+               i = -1;
+               System.out.println("Invalid grade, please try again!\n");
+               }             
+         }
+         return projects;
+      } 
+
+      //Test data validation
+      public static double[] testDataValidation(double[] tests)
+      {
+         Scanner keyboard = new Scanner(System.in);   
+         for (int i = 0; i < 3; i++)
+         {
+            System.out.println("Enter students #" + (i + 1) + " test grade >>");              
+            tests[i] = keyboard.nextDouble();
+            if(tests[i] < 0){
+               i = -1;
+               System.out.println("Invalid grade, please try again!\n");
+               }             
+         }
+         return tests;
+      } 
       
       //Final exam data validation
       public static double finalExamDataValidation(double finalExam)
