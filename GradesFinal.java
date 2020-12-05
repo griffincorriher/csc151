@@ -12,9 +12,12 @@ public class GradesFinal
    private String studentFirst;
    private String studentLast;
    private String studentId;
-   private double labAvg;
-   private double projectAvg;
-   private double testAvg;
+   private double[] labs = new double[3];
+   private double[] projects = new double [3];
+   private double[] tests = new double[3];
+   private double labAvg = 0;
+   private double projectAvg = 0;
+   private double testAvg = 0;
    private double finalExam;
    private double courseGrade;
    private char courseLetter;
@@ -22,6 +25,7 @@ public class GradesFinal
    private LocalDateTime today;
    public static int numStudents = 0;
    public boolean gradeEntered;
+   int i = 0;
 
    //Grade weights
    public double lab = .30;
@@ -36,16 +40,14 @@ public class GradesFinal
       labAvg = 0;
       projectAvg = 0;
       testAvg = 0;
-      finalExam = 0;
-      courseGrade = 0;
       numStudents = numStudents + 1;
    }
    
-      public GradesFinal(double labAvg, double projectAvg, double testAvg, double finalExam)
+      public GradesFinal(double[] labs, double[]projects, double[] tests, double finalExam)
    {
-      this.labAvg = labAvg;
-      this.projectAvg = projectAvg;
-      this.testAvg = testAvg;
+      this.labs = labs;
+      this.projects = projects;
+      this.tests = tests;
       this.finalExam = finalExam;
    }      
    
@@ -62,17 +64,17 @@ public class GradesFinal
    {
       this.studentId = studentId;
    }
-   public void setLabAvg(double labAvg)
+   public void setLabAvg(double[] labs)
    {
-      this.labAvg = labAvg;
+      this.labs = labs;
    }
-   public void setProjectAvg(double projectAvg)
+   public void setProjectAvg(double[] projects)
    {
-      this.projectAvg = projectAvg;
+      this.projects = projects;
    }   
-   public void setTestAvg(double testAvg)
+   public void setTestAvg(double[] tests)
    {
-      this.testAvg = testAvg;
+      this.tests = tests;
    }
    public void setFinalExam(double finalExam)
    {
@@ -104,17 +106,17 @@ public class GradesFinal
    {
       return studentId;
    }
-   public double getLabAvg()
+   public double[] getLabAvg()
    {
-      return labAvg;
+      return labs;
    }
-   public double getProjectAvg()
+   public double[] getProjectAvg()
    {
-      return projectAvg;
+      return projects;
    }   
-   public double getTestAvg()
+   public double[] getTestAvg()
    {
-      return testAvg;
+      return tests;
    }
    public double getFinalExam()
    {
@@ -134,8 +136,14 @@ public class GradesFinal
    }
        
    //Calculate final course grade
-   public void calculateCourseGrade(double labAvg, double testAvg, double projectAvg, double finalExam)
+   public void calculateCourseGrade()
    {
+      for (i = 0; i < labs.length; i++)
+      {
+         labAvg += labs[i];
+      }
+ 
+   
       double courseGrade;
       courseGrade = ( (lab * labAvg) + (test * testAvg) + (project * projectAvg) + (exam * finalExam) );
       this.courseGrade = courseGrade;
@@ -150,7 +158,7 @@ public class GradesFinal
          courseLetter = 'D';
       else
          courseLetter = 'F';
-      this.courseLetter = courseLetter;
+      this.courseLetter = courseLetter;      
    }
    
    //Determine passing grade
@@ -166,16 +174,31 @@ public class GradesFinal
       System.out.println("");
       System.out.println("Student name: " + studentFirst + " " + studentLast);
       System.out.println("Student ID: " + studentId);
-      System.out.println("Test average: " + testAvg);     
+      System.out.println("LABS");
+      for (i = 0; i < 3; i++)
+      {
+         System.out.println("  Lab " + (i + 1) + ": " + labs[i]);
+      }
       System.out.println("Lab average: " + labAvg);
+      System.out.println("");     
+      System.out.println("PROJECTS");
+      for (i = 0; i < 3; i++)
+      {            
+         System.out.println("  Project " + (i + 1) + ": " + projects[i]);
+      }
       System.out.println("Project average: " + projectAvg);
-      System.out.println("Final exam : " + finalExam);
-      System.out.println("Course grade (numeric): " + courseGrade);
-      System.out.println("Course grade (letter): " + courseLetter);
-      System.out.println("Student passing: " + pass); 
-      System.out.println(""); //Delete "" and add today variable into println to debug and prove it grabs date/time for each student
-      System.out.println("The numeric course grade is calculated based on a weighted average: \n Tests = " + test*100 + "%" + "\n Labs = " + lab*100 + "%" + " \n Projects = " + project*100 + "%" + "\n Final Exam = " + exam*100 + "%");                             
-                                     
+      System.out.println("");        
+      System.out.println("TESTS");
+      for (i = 0; i < 3; i++)
+      {            
+         System.out.println("  Test " + (i + 1) + ": " + tests[i]);
+      }   
+      System.out.println("Test average: " + testAvg);
+      System.out.println("");                
+      System.out.println("FINAL EXAM : " + finalExam);
+      System.out.println("COURSE GRADE: " + courseGrade);
+      System.out.println("LETTER GRADE: " + courseLetter);
+      System.out.println("Student passing: " + pass);                        
    } 
                                   
 }   
