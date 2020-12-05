@@ -75,35 +75,59 @@ public class GradeCalculatorFinal
             case 'l':
             case 'L':
             {  
-               lFinish = 0;             
-               labs = labDataValidation();
-               student1.setLabAvg(labs);
-               System.out.println("Values Saved!\n");
-               lFinish = 1;
+               if(lFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  lFinish = 0;             
+                  labs = labDataValidation();
+                  student1.setLabAvg(labs);
+                  System.out.println("Values Saved!\n");
+                  lFinish = 1;
+               }
                break;   
             }  
             
             case 'p':
             case 'P':
-            {    
-               pFinish = 0;           
-               projects = projectDataValidation();
-               student1.setProjectAvg(projects);
-               System.out.println("Values Saved!\n");
-               pFinish = 1;
-               break;    
-            }    
+            {  
+               if(pFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  pFinish = 0;             
+                  projects = projectDataValidation();
+                  student1.setProjectAvg(projects);
+                  System.out.println("Values Saved!\n");
+                  pFinish = 1;
+               }
+               break;   
+            }     
             
             case 't':
             case 'T':
-            {    
-               tFinish = 0;          
-               tests = testDataValidation();
-               student1.setTestAvg(tests);
-               System.out.println("Values Saved!\n");
-               tFinish = 1;               
-               break;
-            }    
+            {  
+               if(tFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  tFinish = 0;             
+                  tests = testDataValidation();
+                  student1.setTestAvg(tests);
+                  System.out.println("Values Saved!\n");
+                  tFinish = 1;
+               }
+               break;   
+            }     
             
             case 'f':
             case 'F':
@@ -161,37 +185,61 @@ public class GradeCalculatorFinal
          {
             case 'l':
             case 'L':
-            {     
-               lFinish = 0;          
-               labs = labDataValidation();
-               student2.setLabAvg(labs);
-               System.out.println("Values Saved!\n");
-               lFinish = 1;
+            {  
+               if(lFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  lFinish = 0;             
+                  labs = labDataValidation();
+                  student2.setLabAvg(labs);
+                  System.out.println("Values Saved!\n");
+                  lFinish = 1;
+               }
                break;   
             }  
             
             case 'p':
             case 'P':
-            {   
-               pFinish = 0;          
-               projects = projectDataValidation();
-               student2.setProjectAvg(projects);
-               System.out.println("Values Saved!\n");
-               pFinish = 1;
-               break;    
-            }    
+            {  
+               if(pFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  pFinish = 0;             
+                  projects = projectDataValidation();
+                  student2.setProjectAvg(projects);
+                  System.out.println("Values Saved!\n");
+                  pFinish = 1;
+               }
+               break;   
+            }     
             
             case 't':
             case 'T':
-            {      
-               tFinish = 0;         
-               tests = testDataValidation();
-               student2.setTestAvg(tests);
-               System.out.println("Values Saved!\n");
-               tFinish = 1;
-               break; 
-            }      
-                        
+            {  
+               if(tFinish == 1)
+               {
+                  System.out.println("\nCategory has already been entered, please select again!\n");
+                  break;
+               }
+               else
+               {
+                  tFinish = 0;             
+                  tests = testDataValidation();
+                  student2.setTestAvg(tests);
+                  System.out.println("Values Saved!\n");
+                  tFinish = 1;
+               }
+               break;   
+            }
+                                    
             case 'f':
             case 'F':
             {  
