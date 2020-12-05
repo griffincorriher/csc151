@@ -42,6 +42,11 @@ public class GradeCalculatorFinal
    //While loop for QUIT PROGRAM function     
    while(choice != 'q' || choice != 'Q')
    {
+      //Reset Variables
+      int lFinish = 0;
+      int pFinish = 0;
+      int tFinish = 0;      
+   
       //Request personal input for Student 1
       studentFirst = inputStudentFirst();
       studentLast = inputStudentLast();      
@@ -53,7 +58,7 @@ public class GradeCalculatorFinal
       student1.setStudentLast(studentLast);
       student1.setStudentId(studentId);
       student1.setToday(today);      
-                           
+                                
       //Student 1 loop                             
       do
       {
@@ -70,28 +75,34 @@ public class GradeCalculatorFinal
             case 'l':
             case 'L':
             {  
+               lFinish = 0;             
                labs = labDataValidation();
                student1.setLabAvg(labs);
                System.out.println("Values Saved!\n");
+               lFinish = 1;
                break;   
             }  
             
             case 'p':
             case 'P':
-            {  
+            {    
+               pFinish = 0;           
                projects = projectDataValidation();
                student1.setProjectAvg(projects);
                System.out.println("Values Saved!\n");
+               pFinish = 1;
                break;    
             }    
             
             case 't':
             case 'T':
-            {  
+            {    
+               tFinish = 0;          
                tests = testDataValidation();
                student1.setTestAvg(tests);
                System.out.println("Values Saved!\n");
-               break; 
+               tFinish = 1;               
+               break;
             }    
             
             case 'f':
@@ -110,7 +121,7 @@ public class GradeCalculatorFinal
             }
 
          }//end student 1 switch  
-      }while(finalExam<0);
+      }while(finalExam<0 || lFinish != 1 || pFinish != 1 || tFinish != 1);
       //end student 1 loop 
       
       //QUIT PROGRAM
@@ -118,10 +129,10 @@ public class GradeCalculatorFinal
          {break;}    
            
       //Reset Variables
-      labAvg = DEFAULT_VALUE;
-      testAvg = DEFAULT_VALUE;
-      projectAvg = DEFAULT_VALUE;
-      finalExam = DEFAULT_VALUE;     
+      finalExam = DEFAULT_VALUE;
+      lFinish = 0;
+      pFinish = 0;
+      tFinish = 0;           
       
       //Request personal input for Student 2
       studentFirst = inputStudentFirst();
@@ -134,7 +145,7 @@ public class GradeCalculatorFinal
       student2.setStudentLast(studentLast);
       student2.setStudentId(studentId);
       student2.setToday(today);   
-          
+                
       //Student 2 loop                             
       do
       {
@@ -150,28 +161,34 @@ public class GradeCalculatorFinal
          {
             case 'l':
             case 'L':
-            { 
+            {     
+               lFinish = 0;          
                labs = labDataValidation();
                student2.setLabAvg(labs);
                System.out.println("Values Saved!\n");
+               lFinish = 1;
                break;   
             }  
             
             case 'p':
             case 'P':
-            {  
+            {   
+               pFinish = 0;          
                projects = projectDataValidation();
                student2.setProjectAvg(projects);
                System.out.println("Values Saved!\n");
+               pFinish = 1;
                break;    
             }    
             
             case 't':
             case 'T':
-            {  
+            {      
+               tFinish = 0;         
                tests = testDataValidation();
                student2.setTestAvg(tests);
                System.out.println("Values Saved!\n");
+               tFinish = 1;
                break; 
             }      
                         
@@ -191,19 +208,13 @@ public class GradeCalculatorFinal
             }
          }//end Student 2 switch  
       
-      }while(finalExam<0);
+      }while(finalExam<0 || lFinish != 1 || pFinish != 1 || tFinish != 1);
       //end Student 2 loop
        
       //QUIT PROGRAM
       if(choice == 'q' || choice == 'Q')
          {break;} 
-                
-      //Reset Variables
-      labAvg = DEFAULT_VALUE;
-      testAvg = DEFAULT_VALUE;
-      projectAvg = DEFAULT_VALUE;
-      finalExam = DEFAULT_VALUE; 
-                       
+                                  
       //Calculate student grade
       student1.calculateCourseGrade();
       student2.calculateCourseGrade();
@@ -298,15 +309,15 @@ public class GradeCalculatorFinal
       public static double[] labDataValidation()
       {
          double[] labs = new double[3];
-         Scanner keyboard = new Scanner(System.in);  
+         Scanner keyboard = new Scanner(System.in);
          for (int i = 0; i < 3; i++)
          {
-            System.out.println("Enter students #" + (i + 1) + " lab grade >>");              
+            System.out.println("Enter grade for lab # " + (i + 1) + " >>");              
             labs[i] = keyboard.nextDouble();
             if(labs[i] < 0){
                i = -1;
                System.out.println("Invalid grade, please try again!\n");
-               }             
+               }          
          }
          return labs;
       }
@@ -318,7 +329,7 @@ public class GradeCalculatorFinal
          Scanner keyboard = new Scanner(System.in);   
          for (int i = 0; i < 3; i++)
          {
-            System.out.println("Enter students #" + (i + 1) + " project grade >>");              
+            System.out.println("Enter grade for project # " + (i + 1) + " >>");              
             projects[i] = keyboard.nextDouble();
             if(projects[i] < 0){
                i = -1;
@@ -335,7 +346,7 @@ public class GradeCalculatorFinal
          Scanner keyboard = new Scanner(System.in);   
          for (int i = 0; i < 3; i++)
          {
-            System.out.println("Enter students #" + (i + 1) + " test grade >>");              
+            System.out.println("Enter grade for test # " + (i + 1) + " >>");              
             tests[i] = keyboard.nextDouble();
             if(tests[i] < 0){
                i = -1;
