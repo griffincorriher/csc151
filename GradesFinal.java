@@ -12,9 +12,9 @@ public class GradesFinal
    private String studentFirst;
    private String studentLast;
    private String studentId;
-   private double[] labs = new double[3];
-   private double[] projects = new double [3];
-   private double[] tests = new double[3];
+   double[] labs = new double[3];
+   double[] projects = new double [3];
+   double[] tests = new double[3];
    private double labAvg = 0;
    private double projectAvg = 0;
    private double testAvg = 0;
@@ -37,6 +37,9 @@ public class GradesFinal
    //Number of students entered
       public GradesFinal()
    {
+      labs[i] = 0;
+      projects[i] = 0;
+      tests[i] = 0;
       labAvg = 0;
       projectAvg = 0;
       testAvg = 0;
