@@ -70,19 +70,19 @@ public class GradeCalculatorFinal
             case 'l':
             case 'L':
             {  
-              labs = inputLabAvg();
-              student1.setLabAvg(labs);
-
-              break;   
+               labs = labDataValidation(labs);
+               student1.setLabAvg(labs);
+               System.out.println("Values Saved!\n");
+               break;   
             }  
             
             case 'p':
             case 'P':
             {  
-              projects = inputProjectAvg();
-              student1.setProjectAvg(projects);
-
-              break;   
+               projects = inputProjectAvg();
+               student1.setProjectAvg(projects);
+               System.out.println("Values Saved!\n");
+               break;   
             }    
             
             case 't':
@@ -90,7 +90,8 @@ public class GradeCalculatorFinal
             {  
                tests = inputTestAvg();
                student1.setTestAvg(tests);
-              break;   
+               System.out.println("Values Saved!\n");               
+               break;   
             }    
             
             case 'f':
@@ -150,7 +151,7 @@ public class GradeCalculatorFinal
             case 'l':
             case 'L':
             {  
-              labs = inputLabAvg();
+              labs = labDataValidation(labs);
               student2.setLabAvg(labs);
 
               break;   
@@ -256,19 +257,6 @@ public class GradeCalculatorFinal
          studentId = keyboard.nextLine();
          return studentId;
       }
-
-      public static double[] inputLabAvg()
-      {
-         double[] labs = new double[3];
-         Scanner keyboard = new Scanner(System.in);
-         int i = 0;     
-         for (i = 0; i < 3; i++)
-         {
-            System.out.println("Enter students #" + (i + 1) + " lab grade >>");               
-            labs[i] = keyboard.nextDouble();
-         }
-         return labs;
-      }
       
       public static double[] inputProjectAvg()
       {
@@ -331,22 +319,22 @@ public class GradeCalculatorFinal
          return choice;
       }
       
-//       //Lab data validation
-//       public static double labDataValidation(double labAvg)
-//       {
-//          if(labAvg>=0){
-//             System.out.println("\nCategory has already been entered, please select again!\n");}        
-//          if(labAvg<0){
-//          labs[i] = inputLabAvg();
-//             if(labAvg<0){
-//                System.out.println("\nInvalid grade, please select from the menu again!\n");}
-//             else{
-//                System.out.println("\nValue saved!\n");}} 
-//                             
-//          return labAvg;
-//                            
-//       }
-//       
+      //Lab data validation
+      public static double[] labDataValidation(double[] labs)
+      {
+         Scanner keyboard = new Scanner(System.in);   
+         for (int i = 0; i < 3; i++)
+         {
+            System.out.println("Enter students #" + (i + 1) + " lab grade >>");              
+            labs[i] = keyboard.nextDouble();
+            if(labs[i] < 0){
+               i = -1;
+               System.out.println("Invalid Entry");
+               }             
+         }
+         return labs;
+      }
+      
 //       //Project data validation
 //       public static double projectDataValidation(double projectAvg)
 //       {
