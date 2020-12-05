@@ -140,10 +140,19 @@ public class GradesFinal
    {
       for (i = 0; i < labs.length; i++)
       {
-         labAvg += labs[i];
+         labAvg += labs[i] / labs.length;
       }
- 
-   
+      
+      for (i = 0; i < projects.length; i++)
+      {
+         projectAvg += projects[i] / projects.length;
+      } 
+      
+      for (i = 0; i < tests.length; i++)
+      {
+         testAvg += tests[i] / tests.length;
+      }   
+      
       double courseGrade;
       courseGrade = ( (lab * labAvg) + (test * testAvg) + (project * projectAvg) + (exam * finalExam) );
       this.courseGrade = courseGrade;
